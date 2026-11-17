@@ -1,3 +1,4 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import {
     Field,
@@ -10,7 +11,9 @@ import { Input } from "@/components/ui/input"
 const AddNewUsers = () => {
     const handleNewUsers = (e) => {
         e.preventDefault();
-
+        const formData = new FormData(e.currentTarget);
+        const newUser = Object.fromEntries(formData.entries());
+        console.log(newUser)
     }
     return (
         <div>
@@ -18,13 +21,14 @@ const AddNewUsers = () => {
                 <FieldGroup>
                     <Field>
                         <FieldLabel htmlFor="fieldgroup-name">Name</FieldLabel>
-                        <Input id="fieldgroup-name" placeholder="Jordan Lee" />
+                        <Input id="fieldgroup-name" name='name' placeholder="Jordan Lee" />
                     </Field>
                     <Field>
                         <FieldLabel htmlFor="fieldgroup-email">Email</FieldLabel>
                         <Input
                             id="fieldgroup-email"
                             type="email"
+                            name='email'
                             placeholder="name@example.com"
                         />
                         <FieldDescription>

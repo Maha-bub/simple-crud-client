@@ -9,7 +9,7 @@ const UsersPage = async () => {
             <h2>Users:{users.length}</h2>
             <div className='grid grid-cols-3 gap-5'>
                 {
-                    users.map(user => <UserCard key={user._id} users={users}></UserCard>)
+                    users.map(user => <UserCard key={user._id} user={user}></UserCard>)
                 }
             </div>
         </div>

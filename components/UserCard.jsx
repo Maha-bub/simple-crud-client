@@ -8,19 +8,18 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 
-const UserCard = () => {
+const UserCard = ({ user }) => {
     return (
         <Card className="relative mx-auto w-full max-w-sm pt-0">
             <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          
+
             <CardHeader>
                 <CardAction>
                     <h1>No action</h1>
                 </CardAction>
-                <CardTitle>Design systems meetup</CardTitle>
+                <CardTitle>{user.name}</CardTitle>
                 <CardDescription>
-                    A practical talk on component APIs, accessibility, and shipping
-                    faster.
+                    Email:{user.email}
                 </CardDescription>
             </CardHeader>
             <CardFooter>
