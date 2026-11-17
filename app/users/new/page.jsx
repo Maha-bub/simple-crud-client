@@ -7,13 +7,32 @@ import {
     FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { redirect } from "next/navigation";
 
 const AddNewUsers = () => {
-    const handleNewUsers = (e) => {
+    const handleNewUsers = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const newUser = Object.fromEntries(formData.entries());
         console.log(newUser)
+
+
+        const response = await fetch(`http://localhost:5000/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+
+        console.log('User response from server', response)
+        const afterSubmit = await response.json();
+        console.log(afterSubmit)
+
+        if (afterSubmit.insertedId) {
+            console.log('User added successfully')
+            redirect('/users')
+        }
     }
     return (
         <div>
